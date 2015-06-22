@@ -29,6 +29,8 @@ var should = require('should'),
  invalid phone, valid name
  invalid phone, invalid name
 
+ valid +phone, null, empty mobile_begin_with
+
  */
 
 
@@ -470,5 +472,155 @@ describe('Testing THA Phone Quick Test', function() {
 			phone(number, country).should.eql(result);
 		});
 	});
+
+});
+
+
+describe('Testing ARG Phone', function() {
+	//	valid +phone, null
+	//	valid +phone, valid iso
+	//	valid +phone, invalid iso
+	//	valid +phone, valid name
+	//	valid +phone, invalid name
+
+	describe('Test 1', function() {
+		var number = '+54 11 1234-5678',
+			country = null,
+			result = ['+541112345678', 'ARG'];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+
+
+	describe('Test 2', function() {
+		var number = '+54 11 1234-5678',
+			country = 'ARG',
+			result = ['+541112345678', 'ARG'];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 3', function() {
+		var number = '+54 11 1234-5678',
+			country = 'USA',
+			result = [];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 4', function() {
+		var number = '+54 11 1234-5678',
+			country = 'Argentina',
+			result = ['+541112345678', 'ARG'];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 5', function() {
+		var number = '+54 11 1234-5678',
+			country = 'United States',
+			result = [];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+
+	//	invalid +phone, null
+	//	invalid +phone, valid iso
+	//	invalid +phone, invalid iso
+	//	invalid +phone, valid name
+	//	invalid +phone, invalid name
+
+
+	describe('Test 6', function() {
+		var number = '+54 11 14-78',
+			country = null,
+			result = [];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 7', function() {
+		var number = '+54 11 14-78',
+			country = 'ARG',
+			result = [];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 8', function() {
+		var number = '+54 11 14-78',
+			country = 'USA',
+			result = [];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 9', function() {
+		var number = '+54 11 14-78',
+			country = 'Argentina',
+			result = [];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 10', function() {
+		var number = '+54 11 14-78',
+			country = 'United States',
+			result = [];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+
+	//	valid phone, null
+	//	valid phone, valid iso
+	//	valid phone, invalid iso
+	//	valid phone, valid name
+	//	valid phone, invalid name
+
+
+	describe('Test 11', function() {
+		var number = '541112345678',
+			country = null,
+			result = [];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 12', function() {
+		var number = '541112345678',
+			country = 'ARG',
+			result = ['+541112345678', 'ARG'];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 13', function() {
+		var number = '541112345678',
+			country = 'ARGINVALID',
+			result = [];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 14', function() {
+		var number = '541112345678',
+			country = 'Argentina',
+			result = ['+541112345678', 'ARG'];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+	describe('Test 15', function() {
+		var number = '541112345678',
+			country = 'Argentina Invalid',
+			result = [];
+		it('returns ' + result, function() {
+			phone(number, country).should.eql(result);
+		});
+	});
+
 
 });
